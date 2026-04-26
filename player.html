@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Search Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="hero">
+        <h1>Player Search Result</h1>
+        <p><a class="back-link" href="/">Back to Home</a></p>
+    </header>
+
+    <section class="top-players">
+        {% if player %}
+            <div class="card-container single-card">
+                <div class="player-card result-card">
+                    <div class="player-overlay">
+                        <h3>{{ player.name }}</h3>
+                        <p><strong>Team:</strong> {{ player.team }}</p>
+                        <p><strong>PTS:</strong> {{ player.pts }}</p>
+                        <p><strong>REB:</strong> {{ player.reb }}</p>
+                        <p><strong>AST:</strong> {{ player.ast }}</p>
+                        <p><strong>Projection:</strong> {{ player.projection }}</p>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <h2>No player found for "{{ search_name }}"</h2>
+            <p>Try searching for LeBron James, Stephen Curry, Jayson Tatum, Nikola Jokic, Giannis Antetokounmpo, or Luka Doncic.</p>
+            <p><a class="back-link" href="/">Go back</a></p>
+        {% endif %}
+    </section>
+</body>
+</html>
